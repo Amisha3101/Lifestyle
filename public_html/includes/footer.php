@@ -1,5 +1,5 @@
 
-        <footer>
+<footer>
             <div class="container">
                 <center>
                 <p>Copyright © Lifestyle Store. 

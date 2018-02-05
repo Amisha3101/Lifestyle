@@ -40,8 +40,11 @@ require 'includes/common.php';
             <button class="btn btn-primary">Login</button>
             </br>
             <?php 
+                   if(isset($_GET['error']))
+                   {
                     $msg=$_GET['error'];
                     echo "$msg";
+                   }
             ?>
         </form>
     </div>
@@ -54,6 +57,7 @@ require 'includes/common.php';
                 
             </div>
         </div>
+        
         <?php
         include 'includes/footer.php';
         ?>

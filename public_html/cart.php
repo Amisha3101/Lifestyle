@@ -30,6 +30,9 @@ require 'includes/common.php';
             <table class="table table-bordered table-responsive" style="margin-top: 100px;">
                 <?php
                 $sum=0;
+                $id="";
+                if (isset($_SESSION['user_id']))
+                {
                 $user_id=$_SESSION['user_id'];
 $query = "SELECT items.price AS Price, items.id, items.name AS Name FROM users_items JOIN items ON "
   . "users_items.item_id = items.id WHERE users_items.user_id='$user_id' and status='Added to cart'";
@@ -48,12 +51,18 @@ $query = "SELECT items.price AS Price, items.id, items.name AS Name FROM users_i
                 <tbody>
                     <?php
                     while ($row = mysqli_fetch_array($result)) {
+                        
+                        
                     $sum+= $row["Price"];
+                    
                     $id .= $row["id"] . ", ";
+                                
                     echo "<tr><td>" . "#" . $row["id"] . "</td><td>" . $row["Name"] . 
                     "</td><td>Rs " . $row["Price"] . "</td>"
    . "<td><a href='cart-remove.php?id={$row['id']}' class='remove_item_link'> Remove</a></td></tr>";
-                    }
+                    
+                            
+   }
                     $id = rtrim($id, ", ");
                     echo "<tr><td></td><td>Total</td><td>Rs " . $sum . "</td>"
  . "<td><a href='success.php?itemsid=" . $id . "' class='btn btn-primary'>Confirm Order</a></td></tr>";
@@ -63,6 +72,7 @@ $query = "SELECT items.price AS Price, items.id, items.name AS Name FROM users_i
                             } else {
                             echo "Add items to the cart first!";
                         }
+                }
                         ?>
                 
         </table>

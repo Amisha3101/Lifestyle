@@ -54,9 +54,17 @@ header('location: products.php');
                 </div>
         </div>
         
+        <div class="container" style="margin-top: 155px;">
+            
+        </div>
         <?php
         include 'includes/footer.php';
+        
         ?>
+        
+        
+        
+        
         
     </body>
 </html>
